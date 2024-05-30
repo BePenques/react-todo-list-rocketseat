@@ -1,8 +1,9 @@
-# React + Vite
+### Desafio prático do primeiro nivel de formação do curso ReactJS da plataforma Rocketseat
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicação de controle de tarefas no estilo to-do list, que contem as funcionalidades:
+- Adicionar uma nova funcionalidade
+- Marcar e desmarcar uma tarefa como concluida
+- Remover uma tarefa da listagem
+- Mostrar o progresso de conclusão das tarefas
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Layout Figma: https://www.figma.com/file/0n0zDN7zbzhRbaEO74Xesx/ToDo-List/duplicate
