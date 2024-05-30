@@ -1,0 +1,25 @@
+.wrapper {
+    max-width: 90rem;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    display: grid;
+    grid-template-columns: 1fr;/* fr - tamanho flexivel*/
+}
+
+.main{
+    width: 46rem;
+    margin: 2rem auto;
+}
+
+@media (max-width: 768px){
+    html {
+        font-size: 87.5%;
+    }
+    .wrapper {
+        grid-template-columns: 1fr;/* fr - tamanho flexivel*/
+    }
+}
+
+ /* 16 --> 100%
+    14 --> ?
+    14 * 100 / 16 = 87,5 */
