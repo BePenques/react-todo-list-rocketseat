@@ -1,0 +1,42 @@
+.taskBox{
+    background: var(--gray-500);
+    width: 100%;
+    height: 4.5rem;
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.taskBox + .taskBox{
+    margin-top: 0.75rem
+}
+
+.checkBoxLabel{
+    width: 42.7rem;
+    margin: auto ;
+    color: var(--gray-100);
+}
+
+input[type=checkbox]{
+    margin-right: 0.75rem;
+    /* background-color: red; */
+}
+
+.checkBoxLabel label{
+    font-size: 14px;
+    width: 39.5rem;
+}
+
+.btn{
+    background: transparent;
+    border: 0;
+    color: var(--gray-300);
+    cursor: pointer;
+    line-height: 0;
+    border-radius: 2px;
+    float: right;
+    margin: auto ;
+}
+
