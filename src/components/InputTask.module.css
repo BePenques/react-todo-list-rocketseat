@@ -63,7 +63,7 @@
 }
 
 .counter span{
-    padding: 1px 8px;
+    padding: 2px 8px;
     background: var(--gray-400);
     border-radius: 8px;
     color: white;

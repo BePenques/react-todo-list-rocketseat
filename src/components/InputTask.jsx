@@ -18,6 +18,7 @@ export function InputTask(){
       ]);
 
       const [newTitleText, setNewTitleText] = useState([]);
+      const [countTask, setCountTask] = useState(0);
       
       function handleCreateNewTask(){
           event.preventDefault()
@@ -39,18 +40,20 @@ export function InputTask(){
         setNewTitleText(event.target.value)
     }
 
-    function handleTask(idToChange){
-       
-       console.log(idToChange)
-       let newTaks = tasks.map(el=>{
-        //    if(el.id === idToChange){
-            // return {          
-            //     ...el,
-            //     isCompleted: !el.isCompleted
-            // }
-        //    }
+    function handleTask({id, value}){
+      
+       const updatedTasks = tasks.map((el)=>{
+           if(el.id === id){
+                return {   
+                    ...el,          
+                    isCompleted: value
+                    
+                }
+           }
+           return {...el}
        })
-       console.log(newTaks);
+       
+        setTasks(updatedTasks);
     
     }
 
@@ -74,8 +77,9 @@ export function InputTask(){
             </form>
             <div className={styles.tasklist}>
                 <div className={styles.counter}>
-                    <strong className={styles.tarefasCriadas}>Tarefas criadas <span>0</span></strong>
-                    <strong className={styles.concluidas}>Concluidas <span>0</span></strong>
+                    <strong className={styles.tarefasCriadas}>Tarefas criadas <span>{tasks.length}</span></strong>
+                    <strong className={styles.concluidas}>Concluidas <span>{tasks.filter(el => el.isCompleted == true).length} de {tasks.length}</span></strong>
+                    
                 </div>
                 <div className={styles.list}>
                     {tasks.map(task => {
