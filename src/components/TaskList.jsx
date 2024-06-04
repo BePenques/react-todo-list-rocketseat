@@ -2,20 +2,23 @@ import styles from './TaskList.module.css'
 import { Task } from "./Task"
 import { v4 as uuidv4 } from 'uuid';
 
-const tasks = [
-    {
-        id: uuidv4(),
-        title: 'Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
-        isCompleted: true
-    },
-    {
-        id: uuidv4(),
-        title: 'Integer 2 urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
-        isCompleted: false
-    }
-  ];
+// const tasks = [
+//     {
+//         id: uuidv4(),
+//         title: 'Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
+//         isCompleted: true
+//     },
+//     {
+//         id: uuidv4(),
+//         title: 'Integer 2 urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
+//         isCompleted: false
+//     }
+//   ];
 
-export function TaskList(){
+export function TaskList(tasks){
+
+    // const [tasks, setTasks] = useState(tasks)
+
     return(
         <div className={styles.tasklist}>
             <div className={styles.counter}>
