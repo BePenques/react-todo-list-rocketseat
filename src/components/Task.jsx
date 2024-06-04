@@ -10,7 +10,7 @@ export function Task({id,title, isCompleted, onHandleTask, onDeleteTask}){
         onHandleTask({ id: id, value: !isCompleted })
     }
     function deleteTask(){
-        onDeleteTask({ id: id})
+        onDeleteTask(id)
     }
 
     return(

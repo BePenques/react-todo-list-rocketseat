@@ -9,32 +9,31 @@ import { Task } from "./Task"
 
 export function InputTask(){
     
-      const [tasks, setTasks] = useState([
-        {
-            id: uuidv4(),
-            title: 'Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
-            isCompleted: false
-        },
-      ]);
+    const [tasks, setTasks] = useState([
+    {
+        id: uuidv4(),
+        title: 'Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
+        isCompleted: false
+    },
+    ]);
 
-      const [newTitleText, setNewTitleText] = useState([]);
-      const [countTask, setCountTask] = useState(0);
+    const [newTitleText, setNewTitleText] = useState([]);
       
-      function handleCreateNewTask(){
-          event.preventDefault()
-         
-          setTasks([//passa qual o novo valor
-             ...tasks,
-             {
-                id: uuidv4(),
-                title: newTitleText,
-                isCompleted: false
-             }
-          ]);
+    function handleCreateNewTask(){
+        event.preventDefault()
+        
+        setTasks([//passa qual o novo valor
+            ...tasks,
+            {
+            id: uuidv4(),
+            title: newTitleText,
+            isCompleted: false
+            }
+        ]);
 
-          setNewTitleText('');
-       
-      }
+        setNewTitleText('');
+    
+    }
     function handleNewCommentChange(){
         // event.target.setCustomValidity('');
         setNewTitleText(event.target.value)
@@ -55,6 +54,16 @@ export function InputTask(){
        
         setTasks(updatedTasks);
     
+    }
+
+    function deleteTask(id){
+
+        const tasksWithoutDeletedOne = tasks.filter(el=>{
+            return el.id != id;
+       })
+
+       setTasks(tasksWithoutDeletedOne);
+
     }
 
 
@@ -90,6 +99,7 @@ export function InputTask(){
                                 title={task.title}
                                 isCompleted={task.isCompleted}
                                 onHandleTask={handleTask}
+                                onDeleteTask={deleteTask}
                             />
                         )
                     })}
