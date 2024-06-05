@@ -2,9 +2,8 @@ import styles from './InputTask.module.css'
 import { PlusCircle} from 'phosphor-react'
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { TaskList } from "./TaskList"
 import { Task } from "./Task"
-// import styles from './TaskList.module.css'
+import { ClipboardText } from 'phosphor-react'
 
 
 export function InputTask(){
@@ -22,7 +21,7 @@ export function InputTask(){
     function handleCreateNewTask(){
         event.preventDefault()
         
-        setTasks([//passa qual o novo valor
+        setTasks([//imutabilidade
             ...tasks,
             {
             id: uuidv4(),
@@ -35,7 +34,6 @@ export function InputTask(){
     
     }
     function handleNewCommentChange(){
-        // event.target.setCustomValidity('');
         setNewTitleText(event.target.value)
     }
 
@@ -87,10 +85,19 @@ export function InputTask(){
             <div className={styles.tasklist}>
                 <div className={styles.counter}>
                     <strong className={styles.tarefasCriadas}>Tarefas criadas <span>{tasks.length}</span></strong>
-                    <strong className={styles.concluidas}>Concluidas <span>{tasks.filter(el => el.isCompleted == true).length} de {tasks.length}</span></strong>
+                    <strong className={styles.concluidas}>Concluidas 
+                            {tasks.length > 0 ? <span>{tasks.filter(el => el.isCompleted == true).length} de {tasks.length}</span>
+                                              :  <span>{tasks.length}</span>
+                            }         
+                    </strong>
                     
                 </div>
-                <div className={styles.list}>
+                <div className={tasks.length > 0  ? styles.list : styles.listZeroItens}>
+                    <div name="classDisplayNone">
+                        <ClipboardText size={56}/>
+                        <span> Você ainda não tem tarefas cadastradas</span>
+                        <p> Crie tarefas e organize seus itens a fazer</p>
+                    </div>
                     {tasks.map(task => {
                         return (
                             <Task 
