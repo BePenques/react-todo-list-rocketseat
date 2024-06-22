@@ -7,15 +7,13 @@ function App() {
  
 
   return (
-   <div>
-      <Header></Header>
+   <main>
+      <Header/>
 
-      <div className={styles.wrapper}>
-        <main className={styles.main}>
+      <section className={styles.wrapper}>
           <InputTask></InputTask>  
-        </main>
-      </div>
-   </div>
+      </section>
+   </main>
   )
 }
 

@@ -3,7 +3,8 @@ import { PlusCircle} from 'phosphor-react'
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { Task } from "./Task"
-import { ClipboardText } from 'phosphor-react'
+import { Empty } from './Empty'
+import { Counters } from './Counters'
 
 
 export function InputTask(){
@@ -19,6 +20,7 @@ export function InputTask(){
     const [newTitleText, setNewTitleText] = useState([]);
       
     function handleCreateNewTask(){
+        
         event.preventDefault()
         
         setTasks([//imutabilidade
@@ -32,9 +34,6 @@ export function InputTask(){
 
         setNewTitleText('');
     
-    }
-    function handleNewCommentChange(){
-        setNewTitleText(event.target.value)
     }
 
     function handleTask({id, value}){
@@ -60,10 +59,21 @@ export function InputTask(){
             return el.id != id;
        })
 
+       if (!confirm('Deseja mesmo apagar essa tarefa?')) {
+        return
+      }
+
        setTasks(tasksWithoutDeletedOne);
 
     }
 
+    const checkedTasks = tasks.reduce((prevValue, currentTask) => {
+        if (currentTask.isCompleted) {
+          return prevValue + 1
+        }
+    
+        return prevValue
+      }, 0)
 
     return (
         <article className={styles.article}>
@@ -73,7 +83,7 @@ export function InputTask(){
                     name="task"  
                     id="task" 
                     value={newTitleText} 
-                    onChange={handleNewCommentChange} 
+                    onChange={(e) => setNewTitleText(e.target.value)} //handleNewCommentChange
                     placeholder='Adicione uma nova tarefa'
                     required
                 />
@@ -83,21 +93,13 @@ export function InputTask(){
                 </button>
             </form>
             <div className={styles.tasklist}>
-                <div className={styles.counter}>
-                    <strong className={styles.tarefasCriadas}>Tarefas criadas <span>{tasks.length}</span></strong>
-                    <strong className={styles.concluidas}>Concluidas 
-                            {tasks.length > 0 ? <span>{tasks.filter(el => el.isCompleted == true).length} de {tasks.length}</span>
-                                              :  <span>{tasks.length}</span>
-                            }         
-                    </strong>
-                    
-                </div>
-                <div className={tasks.length > 0  ? styles.list : styles.listZeroItens}>
-                    <div name="classDisplayNone">
-                        <ClipboardText size={56}/>
-                        <span> Você ainda não tem tarefas cadastradas</span>
-                        <p> Crie tarefas e organize seus itens a fazer</p>
-                    </div>
+                <Counters
+                    tasksLength={tasks.length}
+                    checkedTasks={checkedTasks}
+                />
+       
+                {tasks.length > 0 ? (
+                <div>
                     {tasks.map(task => {
                         return (
                             <Task 
@@ -110,8 +112,11 @@ export function InputTask(){
                             />
                         )
                     })}
-                    
-                </div> 
+                </div>
+                    ) : (
+                    <Empty />
+                )}           
+
             </div>
         </article>
     )

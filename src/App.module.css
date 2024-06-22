@@ -1,25 +1,17 @@
 .wrapper {
-    max-width: 90rem;
-    margin: 2rem auto;
-    padding: 0 1rem;
-    display: grid;
-    grid-template-columns: 1fr;/* fr - tamanho flexivel*/
+    max-width: 46rem;
+    width: 100%;
+    margin: 0 auto;
 }
 
-.main{
-    width: 46rem;
-    margin: 2rem auto;
-}
 
-@media (max-width: 768px){
+@media (max-width: 768px) {
     html {
         font-size: 87.5%;
     }
+
     .wrapper {
-        grid-template-columns: 1fr;/* fr - tamanho flexivel*/
+        grid-template-columns: 1fr;
+        /* fr - tamanho flexivel*/
     }
 }
-
-
-    
-    

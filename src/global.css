@@ -1,4 +1,4 @@
-:root{
+:root {
     --white: #ffffff;
     --gray-100: #F2F2F2;
     --gray-300: #808080;
@@ -16,30 +16,41 @@
     --blue-300: #4EA8DE;
     --purple-300: #8284FA;
 
+    --blue: #4ea8d3;
+    --blue-dark: #1e6f9f;
+
+    --purple: #8284fa;
+    --purple-dark: #5e60ce;
+
+    --danger: #e25858;
 }
 
-:focus{
+:focus {
     outline: transparent !important;
     box-shadow: 0 0 0 1px var(--blue-300);
 }
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body{
+body {
     background: var(--gray-600);
     color: var(--gray-300);
-    -webkit-font-smoothing: antialiased; /* padronização para fontes ficarem finas e detalhadas, principalmente para fonte que não são padrão no sitema*/
+    -webkit-font-smoothing: antialiased;
+    /* padronização para fontes ficarem finas e detalhadas, principalmente para fonte que não são padrão no sitema*/
 }
 
-body, textarea,button{
+body,
+textarea,
+button {
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
     font-size: 0.875rem;
 }
-input{
+
+input {
     font-size: 1rem;
 }
